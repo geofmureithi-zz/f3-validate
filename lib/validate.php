@@ -715,6 +715,10 @@ class Validate extends Prefab
                 case 'validate_min_age':
                     $resp[$field] = "The $ucfield field needs to have an age greater than or equal to $param";
                     break;
+                case 'validate_equalsfield':
+                    $ucparam = ucwords(str_replace(array('_', '-'), chr(32), $param));
+                    $resp[$field] = "The $ucfield field does not equal $ucparam field";
+                    break;
                 default:
                     $resp[$field] = "The $ucfield field is invalid";
             }

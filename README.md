@@ -56,6 +56,7 @@ Available Validators
 * phone_number `Validate phone numbers that match the following examples: 555-555-5555 , 5555425555, 555 555 5555, 1(519) 555-4444, 1 (519) 555-4422, 1-555-555-5555`
 * regex `You can pass a custom regex using the following format: 'regex,/your-regex/'`
 * valid_json_string `validate string to check if it's a valid json format`
+* equalsfield `Check if two fields are equals`
 
 Available Filters
 -----------------
