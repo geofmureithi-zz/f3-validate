@@ -89,7 +89,7 @@ Adding custom validators and filters is made easy by using callback functions.
    It should return a boolean value indicating whether the value is valid.
 */
 Validate::add_validator("is_code", function($field, $input, $param = NULL) {
-    return preg_match("^[A-Z]{3}\d{3}$", $input[$field])
+    return preg_match("^[A-Z]{3}\d{3}$", $input[$field]);
 });
 
 /* 
