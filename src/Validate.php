@@ -31,11 +31,11 @@ trait Validate
             "ipv6" => "The value of {0} must be a valid ipv6 address",
             "max_length" => "The length of {0} can not be greater than {1}",
             "min_length" => "The length of {0} can not be less than {1}",
-            "exact_length" => "The length of {0} must than {1}",
+            "exact_length" => "The length of {0} must be exactly {1}",
             "alphanumeric" => "The value of {0} can only contain alphanumerics",
             "alpha" => "The value of {0} can only contain alphabet letters",
-            "matches" => "The value of {0} should match that of {1}",
             "numeric" => "The value of {0} can only contain numbers",
+            "matches" => "The value of {0} should match that of {1}",
             "boolean" => "The value of {0} can only contain boolean values",
             "phone" => "The value of {0} must be a valid phone number",
         ];
@@ -68,7 +68,7 @@ trait Validate
                 return strlen($str) > (int) $rule[0];
             },
             "exact_length" => function ($str, $rule = []) {
-                return strlen($str) == (int) $rule[0];
+                return strlen($str) === (int) $rule[0];
             },
             "alphanumeric" => function ($str) {
                 return ctype_alnum($str);

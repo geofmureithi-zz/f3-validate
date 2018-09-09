@@ -1,9 +1,11 @@
 <?php
 require_once('src/Validate.php');
 
-class MockIPTest{
+class MockIPTest
+{
     use Validate;
-    public  function getRules()
+
+    public function getRules()
     {
         return [
             "ip1" => "ipv4",
@@ -12,9 +14,11 @@ class MockIPTest{
     }
 }
 
-class IPTest extends \PHPUnit\Framework\TestCase {
+class IPTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAssertValidIps(){
+    public function testAssertValidIps()
+    {
         $input = [
             "ip1" => "178.7.35.202",
             "ip2" => "2001:db8::1428:57ab"
@@ -23,7 +27,8 @@ class IPTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mockIp->check($input));
     }
 
-    public function testRejectInvalidIps(){
+    public function testRejectInvalidIps()
+    {
         $input = [
             "ip1" => "locallost",
             "ip2" => "10000.1.1.0.1"

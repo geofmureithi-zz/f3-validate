@@ -22,7 +22,6 @@ class LengthTest extends \PHPUnit\Framework\TestCase {
             "exact_length" => "exactlyten"
         ];
         $mock = new MockLengthTest();
-        var_dump($mock->check($input));
         $this->assertEquals(true, $mock->check($input));
     }
 
@@ -33,8 +32,9 @@ class LengthTest extends \PHPUnit\Framework\TestCase {
             "exact_length" => "no exactly ten"
         ];
         $mock = new MockLengthTest();
-        $this->assertContains("The length of max_length can not be greater than 10", $mock->check($input));
-        $this->assertContains("The length of min_length can not be less than 10", $mock->check($input));
-        $this->assertContains("The length of exact_length must be 10", $mock->check($input));
+        $result = $mock->check($input);
+        $this->assertContains("The length of max_length can not be greater than 10", $result );
+        $this->assertContains("The length of min_length can not be less than 10", $result);
+        $this->assertContains("The length of exact_length must be exactly 10", $result);
     }
 }
