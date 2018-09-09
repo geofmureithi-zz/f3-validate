@@ -3,7 +3,7 @@ require_once('src/Validate.php');
 
 class MockCardTest{
     use Validate;
-    public  function getRules()
+    public function getRules()
     {
         return [
             "ccard" => "card"
@@ -13,19 +13,19 @@ class MockCardTest{
 
 class CardTest extends \PHPUnit\Framework\TestCase {
 
-    public function testAssertValidEmail(){
+    public function testAssertValidCard(){
         $input = [
             "ccard" => "343760667618602"
         ];
-        $mockEmail = new MockCardTest();
-        $this->assertEquals(true, $mockEmail->check($input));
+        $mockCard = new MockCardTest();
+        $this->assertEquals(true, $mockCard->check($input));
     }
 
-    public function testRejectInvalidEmail(){
+    public function testRejectInvalidCard(){
         $input = [
             "ccard" => "test"
         ];
-        $mockEmail = new MockCardTest();
-        $this->assertContains("The value of ccard must be a valid credit card", $mockEmail->check($input));
+        $mockCard = new MockCardTest();
+        $this->assertContains("The value of ccard must be a valid credit card", $mockCard->check($input));
     }
 }

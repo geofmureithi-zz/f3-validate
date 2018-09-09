@@ -17,15 +17,15 @@ class UrlTest extends \PHPUnit\Framework\TestCase {
         $input = [
             "website" => "http://fatfreeframework.com"
         ];
-        $mockEmail = new MockUrlTest();
-        $this->assertEquals(true, $mockEmail->check($input));
+        $mock = new MockUrlTest();
+        $this->assertEquals(true, $mock->check($input));
     }
 
     public function testRejectWhenUrlInvalid(){
         $input = [
             "website" => "test"
         ];
-        $mockEmail = new MockUrlTest();
-        $this->assertContains("The value of website must be a valid url", $mockEmail->check($input));
+        $mock = new MockUrlTest();
+        $this->assertContains("The value of website must be a valid url", $mock->check($input));
     }
 }

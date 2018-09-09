@@ -17,23 +17,23 @@ class RequiredTest extends \PHPUnit\Framework\TestCase {
         $input = [
             "email" => "test@email.com"
         ];
-        $mockEmail = new MockRequiredTest();
-        $this->assertEquals(true, $mockEmail->check($input));
+        $mock = new MockRequiredTest();
+        $this->assertEquals(true, $mock->check($input));
     }
 
     public function testRejectWhenEmpty(){
         $input = [
             "email" => ""
         ];
-        $mockEmail = new MockRequiredTest();
-        $this->assertContains("The value of email is required", $mockEmail->check($input));
+        $mock = new MockRequiredTest();
+        $this->assertContains("The value of email is required", $mock->check($input));
     }
 
     public function testRejectWhenNonExistent(){
         $input = [
             "website" => "google.com"
         ];
-        $mockEmail = new MockRequiredTest();
-        $this->assertContains("The value of email is required", $mockEmail->check($input));
+        $mock = new MockRequiredTest();
+        $this->assertContains("The value of email is required", $mock->check($input));
     }
 }

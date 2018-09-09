@@ -21,7 +21,7 @@ trait Validate
 
     private $phoneRegex = '/^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i';
 
-    private final function getDefaultErrorMessages(){
+    protected function getDefaultErrorMessages(){
         return [
             "required" => "The value of {0} is required",
             "email" => "The value of {0} must be a valid email",
@@ -40,7 +40,7 @@ trait Validate
             "phone" => "The value of {0} must be a valid phone number",
         ];
     }
-    private final function getDefaultValidators()
+    protected function getDefaultValidators()
     {
         return [
             "required" => function($str){
@@ -62,13 +62,13 @@ trait Validate
                 return Audit::instance()->ipv6($str);
             },
             "max_length" => function ($str, $rule = []) {
-                return strlen($str) <= $rule;
+                return strlen($str) < (int) $rule[0];
             },
-            "min_length" => function ($str, $rule) {
-                return strlen($str) >= $rule;
+            "min_length" => function ($str, $rule = []) {
+                return strlen($str) > (int) $rule[0];
             },
-            "exact_length" => function ($str, $rule) {
-                return strlen($str) == $rule;
+            "exact_length" => function ($str, $rule = []) {
+                return strlen($str) == (int) $rule[0];
             },
             "alphanumeric" => function ($str) {
                 return ctype_alnum($str);
@@ -117,7 +117,7 @@ trait Validate
                 array_shift($ruleConfigs);
                 if($f3->call($callable, [$value, $ruleConfigs, $input])) continue;
                 $error = $errorMessages[$mainRule]?$errorMessages[$mainRule]:static::$defaultErrorMessage;
-                return $f3->format($error, $field, $rule);
+                return $f3->format($error, $field, implode(' , ', $ruleConfigs));
             }
             return true;
         };
