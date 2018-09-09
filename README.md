@@ -1,7 +1,7 @@
 # Fat Free Framework Validator
 
 An easy to use and strait to the point validation trait for Fat Free Framework 
-
+[![Build Status](https://travis-ci.org/geofmureithi/f3-validate.svg?branch=master)](https://travis-ci.org/geofmureithi/f3-validate)
 ## Installation
 
 ##### Using Composer
