@@ -1,0 +1,23 @@
+{
+    "name": "mureithi/f3-validate",
+    "description": "A validation lib for Fat Free Framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Geof Mureithi",
+            "email": "mureithinjuguna@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "bcosca/fatfree": "^3.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    }
+}
