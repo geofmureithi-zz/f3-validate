@@ -26,7 +26,7 @@ trait Validate
             "required" => "The value of {0} is required",
             "email" => "The value of {0} must be a valid email",
             "url" => "The value of {0} must be a valid url",
-            "card" => "The value of {0} must be a valid card",
+            "card" => "The value of {0} must be a valid credit card",
             "ipv4" => "The value of {0} must be a valid ipv4 address",
             "ipv6" => "The value of {0} must be a valid ipv6 address",
             "max_length" => "The length of {0} can not be greater than {1}",
