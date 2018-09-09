@@ -38,6 +38,7 @@ trait Validate
             "matches" => "The value of {0} should match that of {1}",
             "boolean" => "The value of {0} can only contain boolean values",
             "phone" => "The value of {0} must be a valid phone number",
+            "regex" => "The value of {0} must match the regex {1}"
         ];
     }
     protected function getDefaultValidators()
@@ -77,16 +78,19 @@ trait Validate
                 return ctype_alpha($str);
             },
             "matches" => function ($str, $rule, $input) {
-                return $str === $input[$rule];
+                return $str === $input[$rule[0]];
             },
             "numeric" => function ($str) {
                 return is_numeric($str);
             },
             "boolean" => function ($str) {
-                return in_array($str, [true, "true", 1, "on", "yes", false, "false", "off", "no"]);
+                return in_array($str, [true, "true", 1, "on", "yes", false, "false", "off", "no"], true);
             },
             "phone" => function ($str) {
                 return preg_match($this->phoneRegex, $str);
+            },
+            "regex" => function ($str, $rule = []) {
+                return preg_match($rule[0], $str);
             }
 
         ];
