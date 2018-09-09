@@ -1,7 +1,6 @@
 language: php
 php:
   - '7.1'
-  - hhvm # on Trusty only
 cache:
   directories:
     - $HOME/.composer/cache
