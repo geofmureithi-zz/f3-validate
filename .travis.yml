@@ -1,10 +1,7 @@
 language: php
 php:
-  - '5.4'
-  - '5.6'
   - '7.1'
   - hhvm # on Trusty only
-  - nightly
 cache:
   directories:
     - $HOME/.composer/cache
@@ -12,4 +9,4 @@ before_script:
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --prefer-source --dev
 script:
-    - vendor/bin/phpunit --coverage-clover=coverage.xml
+    - ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests
