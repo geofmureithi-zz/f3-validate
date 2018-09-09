@@ -1,9 +1,10 @@
 <?php
-require_once('src/Validate.php');
 
-class MockEmailTest{
+class MockEmailTest
+{
     use Validate;
-    public  function getRules()
+
+    public function getRules()
     {
         return [
             "email" => "email"
@@ -11,9 +12,11 @@ class MockEmailTest{
     }
 }
 
-class EmailTest extends \PHPUnit\Framework\TestCase {
+class EmailTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAssertValidEmail(){
+    public function testAssertValidEmail()
+    {
         $input = [
             "email" => "test@email.com"
         ];
@@ -21,7 +24,8 @@ class EmailTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mockEmail->check($input));
     }
 
-    public function testRejectInvalidEmail(){
+    public function testRejectInvalidEmail()
+    {
         $input = [
             "email" => "test"
         ];

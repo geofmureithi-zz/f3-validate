@@ -1,8 +1,9 @@
 <?php
-require_once('src/Validate.php');
 
-class MockAphaNumericTest{
+class MockAphaNumericTest
+{
     use Validate;
+
     public function getRules()
     {
         return [
@@ -13,9 +14,11 @@ class MockAphaNumericTest{
     }
 }
 
-class AphaNumericTest extends \PHPUnit\Framework\TestCase {
+class AphaNumericTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAcceptWhenValid(){
+    public function testAcceptWhenValid()
+    {
         $input = [
             "alphanumeric" => "alphanumeric1235",
             "alpha" => "alphakzzz",
@@ -25,7 +28,8 @@ class AphaNumericTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mock->check($input));
     }
 
-    public function testRejectWhenInvalid(){
+    public function testRejectWhenInvalid()
+    {
         $input = [
             "alphanumeric" => "! @ # & ( ) – [ { } ] : ; ', ? / *",
             "alpha" => "12345",
@@ -33,7 +37,6 @@ class AphaNumericTest extends \PHPUnit\Framework\TestCase {
         ];
         $mock = new MockAphaNumericTest();
         $result = $mock->check($input);
-        var_dump($result);
         $this->assertContains("The value of alphanumeric can only contain alphanumerics", $result);
         $this->assertContains("The value of alpha can only contain alphabet letters", $result);
         $this->assertContains("The value of numeric can only contain numbers", $result);

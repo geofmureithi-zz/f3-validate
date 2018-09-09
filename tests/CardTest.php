@@ -1,8 +1,9 @@
 <?php
-require_once('src/Validate.php');
 
-class MockCardTest{
+class MockCardTest
+{
     use Validate;
+
     public function getRules()
     {
         return [
@@ -11,9 +12,11 @@ class MockCardTest{
     }
 }
 
-class CardTest extends \PHPUnit\Framework\TestCase {
+class CardTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAssertValidCard(){
+    public function testAssertValidCard()
+    {
         $input = [
             "ccard" => "343760667618602"
         ];
@@ -21,7 +24,8 @@ class CardTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mockCard->check($input));
     }
 
-    public function testRejectInvalidCard(){
+    public function testRejectInvalidCard()
+    {
         $input = [
             "ccard" => "test"
         ];

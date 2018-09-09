@@ -1,8 +1,10 @@
 <?php
-require_once('src/Validate.php');
 
-class MockUrlTest{
+
+class MockUrlTest
+{
     use Validate;
+
     public function getRules()
     {
         return [
@@ -11,9 +13,11 @@ class MockUrlTest{
     }
 }
 
-class UrlTest extends \PHPUnit\Framework\TestCase {
+class UrlTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAcceptOnValidUrl(){
+    public function testAcceptOnValidUrl()
+    {
         $input = [
             "website" => "http://fatfreeframework.com"
         ];
@@ -21,7 +25,8 @@ class UrlTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mock->check($input));
     }
 
-    public function testRejectWhenUrlInvalid(){
+    public function testRejectWhenUrlInvalid()
+    {
         $input = [
             "website" => "test"
         ];

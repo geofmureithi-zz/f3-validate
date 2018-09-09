@@ -1,5 +1,4 @@
 <?php
-require_once('src/Validate.php');
 
 class MockEmailMxTest
 {

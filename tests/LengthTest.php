@@ -1,8 +1,9 @@
 <?php
-require_once('src/Validate.php');
 
-class MockLengthTest{
+class MockLengthTest
+{
     use Validate;
+
     public function getRules()
     {
         return [
@@ -13,9 +14,11 @@ class MockLengthTest{
     }
 }
 
-class LengthTest extends \PHPUnit\Framework\TestCase {
+class LengthTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAcceptWhenValid(){
+    public function testAcceptWhenValid()
+    {
         $input = [
             "max_length" => "below 10",
             "min_length" => "greater than ten",
@@ -25,7 +28,8 @@ class LengthTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mock->check($input));
     }
 
-    public function testRejectWhenInvalid(){
+    public function testRejectWhenInvalid()
+    {
         $input = [
             "max_length" => "greater than ten",
             "min_length" => "below 10",
@@ -33,7 +37,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase {
         ];
         $mock = new MockLengthTest();
         $result = $mock->check($input);
-        $this->assertContains("The length of max_length can not be greater than 10", $result );
+        $this->assertContains("The length of max_length can not be greater than 10", $result);
         $this->assertContains("The length of min_length can not be less than 10", $result);
         $this->assertContains("The length of exact_length must be exactly 10", $result);
     }

@@ -1,8 +1,9 @@
 <?php
-require_once('src/Validate.php');
 
-class MockPhoneTest{
+class MockPhoneTest
+{
     use Validate;
+
     public function getRules()
     {
         return [
@@ -11,9 +12,11 @@ class MockPhoneTest{
     }
 }
 
-class PhoneTest extends \PHPUnit\Framework\TestCase {
+class PhoneTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAssertValidPhone(){
+    public function testAssertValidPhone()
+    {
         $input = [
             "phone" => "1-234-567-8901"
         ];
@@ -21,7 +24,8 @@ class PhoneTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mockPhone->check($input));
     }
 
-    public function testRejectInvalidPhone(){
+    public function testRejectInvalidPhone()
+    {
         $input = [
             "phone" => "1-234"
         ];

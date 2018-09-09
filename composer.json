@@ -1,5 +1,5 @@
 {
-    "name": "mureithi/f3-validate",
+    "name": "geofmureithi/f3-validate",
     "description": "A validation lib for Fat Free Framework",
     "type": "library",
     "license": "MIT",
@@ -10,12 +10,10 @@
         }
     ],
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+      "classmap": ["lib/"]
     },
     "require": {
-        "bcosca/fatfree": "^3.6"
+        "bcosca/fatfree": "^3.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.3"

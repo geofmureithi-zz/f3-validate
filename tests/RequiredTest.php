@@ -1,8 +1,9 @@
 <?php
-require_once('src/Validate.php');
 
-class MockRequiredTest{
+class MockRequiredTest
+{
     use Validate;
+
     public function getRules()
     {
         return [
@@ -11,9 +12,11 @@ class MockRequiredTest{
     }
 }
 
-class RequiredTest extends \PHPUnit\Framework\TestCase {
+class RequiredTest extends \PHPUnit\Framework\TestCase
+{
 
-    public function testAcceptWhenExists(){
+    public function testAcceptWhenExists()
+    {
         $input = [
             "email" => "test@email.com"
         ];
@@ -21,7 +24,8 @@ class RequiredTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals(true, $mock->check($input));
     }
 
-    public function testRejectWhenEmpty(){
+    public function testRejectWhenEmpty()
+    {
         $input = [
             "email" => ""
         ];
@@ -29,7 +33,8 @@ class RequiredTest extends \PHPUnit\Framework\TestCase {
         $this->assertContains("The value of email is required", $mock->check($input));
     }
 
-    public function testRejectWhenNonExistent(){
+    public function testRejectWhenNonExistent()
+    {
         $input = [
             "website" => "google.com"
         ];
