@@ -122,9 +122,17 @@ trait Validate
             return true;
         };
         foreach ($rules as $field=>$rule){
+            /*
+             * The line below ensures that if no input and the field is not required then no need validation
+             * For example, A user doesn't need to enter their website during profile creation, but if they enter, it has to be valid
+             * Hence remember to add required rule.
+             * [Possible Bug] Additionally, avoid rules with the string "required" unless the field is required.
+             * TODO: find a better fix for the above scenario
+             */
+            if(!$input[$field] && !preg_match('/required/',$rule)) continue;
             $result = $validateMapper($field,$input[$field], $rule,$input);
             if($result !== true)
-                $this->errors[] = $result;
+                $this->errors[$field] = $result;
         }
         return $this->errors? $this->errors: true;
     }

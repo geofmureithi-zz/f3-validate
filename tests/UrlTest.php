@@ -13,19 +13,19 @@ class MockUrlTest{
 
 class UrlTest extends \PHPUnit\Framework\TestCase {
 
-    public function testAcceptWhenExists(){
+    public function testAcceptOnValidUrl(){
         $input = [
-            "website" => "www.google.com"
+            "website" => "http://fatfreeframework.com"
         ];
         $mockEmail = new MockUrlTest();
         $this->assertEquals(true, $mockEmail->check($input));
     }
 
-    public function testRejectWhenNonExistOrInvalid(){
+    public function testRejectWhenUrlInvalid(){
         $input = [
-            "website" => ""
+            "website" => "test"
         ];
         $mockEmail = new MockUrlTest();
-        $this->assertContains("The value of email is required", $mockEmail->check($input));
+        $this->assertContains("The value of website must be a valid url", $mockEmail->check($input));
     }
 }
