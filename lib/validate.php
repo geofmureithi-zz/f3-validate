@@ -111,6 +111,15 @@ trait Validate
             "exact_length" => function ($str, $rule = []) {
                 return strlen($str) === (int)$rule[0];
             },
+            "mb_max_length" => function ($str, $rule = []) {
+                return mb_strlen($str) < (int)$rule[0];
+            },
+            "mb_min_length" => function ($str, $rule = []) {
+                return mb_strlen($str) > (int)$rule[0];
+            },
+            "mb_exact_length" => function ($str, $rule = []) {
+                return mb_strlen($str) === (int)$rule[0];
+            },
             "alphanumeric" => function ($str) {
                 return ctype_alnum($str);
             },
@@ -152,6 +161,9 @@ trait Validate
             "max_length" => "The length of {0} can not be greater than {1}",
             "min_length" => "The length of {0} can not be less than {1}",
             "exact_length" => "The length of {0} must be exactly {1}",
+            "mb_max_length" => "The length of {0} can not be greater than {1}",
+            "mb_min_length" => "The length of {0} can not be less than {1}",
+            "mb_exact_length" => "The length of {0} must be exactly {1}",
             "alphanumeric" => "The value of {0} can only contain alphanumerics",
             "alpha" => "The value of {0} can only contain alphabet letters",
             "numeric" => "The value of {0} can only contain numbers",
