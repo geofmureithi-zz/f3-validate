@@ -9,7 +9,9 @@ class MockLengthTest2
         return [
             "max_length" => "max_length,10",
             "min_length" => "min_length,10",
-            "exact_length" => "exact_length,10"
+            "exact_length" => "exact_length,10",
+            "mb_min_length" => "mb_min_length,10",
+            "mb_exact_length" => "mb_exact_length,10"
         ];
     }
 }
@@ -22,7 +24,10 @@ class LengthTest2 extends \PHPUnit\Framework\TestCase
         $input = [
             "max_length" => "exactlyten",
             "min_length" => "exactlyten",
-            "exact_length" => "exactlyten"
+            "exact_length" => "exactlyten",
+            "mb_max_length" => str_repeat("©", 10),
+            "mb_min_length" => str_repeat("©", 10),
+            "mb_exact_length" => str_repeat("©", 10)
         ];
         $mock = new MockLengthTest2();
         $this->assertEquals(true, $mock->check($input));
@@ -33,7 +38,10 @@ class LengthTest2 extends \PHPUnit\Framework\TestCase
         $input = [
             "max_length" => "exactly ten",
             "min_length" => "exactly ten",
-            "exact_length" => "exactly ten"
+            "exact_length" => "exactly ten",
+            "mb_max_length" => str_repeat("©", 11),
+            "mb_min_length" => str_repeat("©", 9),
+            "mb_exact_length" => str_repeat("©", 11)
         ];
         $mock = new MockLengthTest2();
         $result = $mock->check($input);
