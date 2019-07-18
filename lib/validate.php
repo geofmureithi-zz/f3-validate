@@ -103,10 +103,10 @@ trait Validate
                 return Audit::instance()->ipv6($str);
             },
             "max_length" => function ($str, $rule = []) {
-                return strlen($str) < (int)$rule[0];
+                return extension_loaded('mbstring') ? mb_strlen($str) <= (int)$rule[0] : strlen($str) <= (int)$rule[0];
             },
             "min_length" => function ($str, $rule = []) {
-                return strlen($str) > (int)$rule[0];
+                return extension_loaded('mbstring') ? mb_strlen($str) >= (int)$rule[0] : strlen($str) >= (int)$rule[0];
             },
             "exact_length" => function ($str, $rule = []) {
                 return strlen($str) === (int)$rule[0];
