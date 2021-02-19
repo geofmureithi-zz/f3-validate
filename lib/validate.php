@@ -44,8 +44,8 @@ trait Validate
         $configValidators = $f3->exists("VALIDATE.validators") ? $f3->get('VALIDATE.validators') : [];
         $configErrorMessages = $f3->exists("VALIDATE.errors") ? $f3->get('VALIDATE.errors') : [];
         $rules = $this->getRules();
-        $validators = array_merge($this->getDefaultValidators(), $configValidators, Validate::$extendedValidators);
-        $errorMessages = array_merge($this->getDefaultErrorMessages(), $configErrorMessages, Validate::$extendedErrorMessages);
+        $validators = array_merge(static::getDefaultValidators(), $configValidators, Validate::$extendedValidators);
+        $errorMessages = array_merge(static::getDefaultErrorMessages(), $configErrorMessages, Validate::$extendedErrorMessages);
         $validateMapper = function ($field, $value, $rule, $input) use ($f3, $validators, $errorMessages) {
             $innerRules = explode('|', $rule);
             if (!$innerRules) return true;
@@ -81,7 +81,7 @@ trait Validate
      * getDefaultValidators: Gets the inbult validators
      * @return array
      */
-    protected function getDefaultValidators()
+    protected static function getDefaultValidators()
     {
         return [
             "required" => function ($str) {
@@ -140,7 +140,7 @@ trait Validate
      * getDefaultErrorMessages: returns inbuilt error messages for default rules
      * @return array
      */
-    protected function getDefaultErrorMessages()
+    protected static function getDefaultErrorMessages()
     {
         return [
             "required" => "The value of {0} is required",
