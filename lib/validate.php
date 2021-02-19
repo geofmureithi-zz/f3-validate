@@ -142,23 +142,24 @@ trait Validate
      */
     protected function getDefaultErrorMessages()
     {
+        $f3 = \Base::instance();
         return [
-            "required" => "The value of {0} is required",
-            "email" => "The value of {0} must be a valid email",
-            "url" => "The value of {0} must be a valid url",
-            "card" => "The value of {0} must be a valid credit card",
-            "ipv4" => "The value of {0} must be a valid ipv4 address",
-            "ipv6" => "The value of {0} must be a valid ipv6 address",
-            "max_length" => "The length of {0} can not be greater than {1}",
-            "min_length" => "The length of {0} can not be less than {1}",
-            "exact_length" => "The length of {0} must be exactly {1}",
-            "alphanumeric" => "The value of {0} can only contain alphanumerics",
-            "alpha" => "The value of {0} can only contain alphabet letters",
-            "numeric" => "The value of {0} can only contain numbers",
-            "matches" => "The value of {0} should match that of {1}",
-            "boolean" => "The value of {0} can only contain boolean values",
-            "phone" => "The value of {0} must be a valid phone number",
-            "regex" => "The value of {0} must match the regex {1}"
+            "required"          => $f3->get('f3_validate_required') ?? "The value of {0} is required",
+            "email"             => $f3->get('f3_validate_email') ?? "The value of {0} must be a valid email",
+            "url"               => $f3->get('f3_validate_url') ?? "The value of {0} must be a valid url"),
+            "card"              => $f3->get('f3_validate_card') ?? "The value of {0} must be a valid credit card"),
+            "ipv4"              => $f3->get('f3_validate_ipv4') ?? "The value of {0} must be a valid ipv4 address",
+            "ipv6"              => $f3->get('f3_validate_ipv6') ?? "The value of {0} must be a valid ipv6 address",
+            "max_length"        => $f3->get('f3_validate_length') ?? "The length of {0} can not be greater than {1}",
+            "min_length"        => $f3->get('f3_validate_min_length') ?? "The length of {0} can not be less than {1}",
+            "exact_length"      => $f3->get('f3_validate_exact_length') ?? "The length of {0} must be exactly {1}",
+            "alphanumeric"      => $f3->get('f3_validate_alphanumeric') ?? "The value of {0} can only contain alphanumerics",
+            "alpha"             => $f3->get('f3_validate_alpha') ?? "The value of {0} can only contain alphabet letters",
+            "numeric"           => $f3->get('f3_validate_numeric') ?? "The value of {0} can only contain numbers",
+            "matches"           => $f3->get('f3_validate_matches') ?? "The value of {0} should match that of {1}",
+            "boolean"           => $f3->get('f3_validate_boolean') ?? "The value of {0} can only contain boolean values",
+            "phone"             => $f3->get('f3_validate_phone') ?? "The value of {0} must be a valid phone number",
+            "regex"             => $f3->get('f3_validate_regex') ?? "The value of {0} must match the regex {1}",
         ];
     }
 }
