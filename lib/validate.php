@@ -1,5 +1,7 @@
 <?php
 
+use Audit;
+
 trait Validate
 {
     static $extendedValidators = [
@@ -40,7 +42,7 @@ trait Validate
     public function check($input)
     {
         $this->errors = [];
-        $f3 = Base::instance();
+        $f3 = \Base::instance();
         $configValidators = $f3->exists("VALIDATE.validators") ? $f3->get('VALIDATE.validators') : [];
         $configErrorMessages = $f3->exists("VALIDATE.errors") ? $f3->get('VALIDATE.errors') : [];
         $rules = $this->getRules();
@@ -53,7 +55,7 @@ trait Validate
                 $ruleConfigs = $f3->split($currentRule, false);
                 $mainRule = $ruleConfigs[0];
                 $callable = $validators[$mainRule];
-                if (!$callable) throw new Exception("Validation for $mainRule is missing");
+                if (!$callable) throw new \Exception("Validation for $mainRule is missing");
                 array_shift($ruleConfigs);
                 if ($f3->call($callable, [$value, $ruleConfigs, $input])) continue;
                 $error = $errorMessages[$mainRule] ? $errorMessages[$mainRule] : Validate::$defaultErrorMessage;
