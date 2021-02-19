@@ -37,7 +37,7 @@ class Profile
 $data = $f3->get('POST')
 $profile = new Profile();
 $result = $profile->check($data);
-if( $result != true) return $result; //errors
+if( $result !== true) return $result; //errors
 $profile->save();
 ```
 Available Validators
