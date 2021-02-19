@@ -81,7 +81,7 @@ trait Validate
      * getDefaultValidators: Gets the inbult validators
      * @return array
      */
-    protected function getDefaultValidators()
+    protected static function getDefaultValidators()
     {
         return [
             "required" => function ($str) {
@@ -140,7 +140,7 @@ trait Validate
      * getDefaultErrorMessages: returns inbuilt error messages for default rules
      * @return array
      */
-    protected function getDefaultErrorMessages()
+    protected static function getDefaultErrorMessages()
     {
         return [
             "required" => "The value of {0} is required",
