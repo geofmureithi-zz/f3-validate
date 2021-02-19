@@ -146,8 +146,8 @@ trait Validate
         return [
             "required"          => $f3->get('f3_validate_required') ?? "The value of {0} is required",
             "email"             => $f3->get('f3_validate_email') ?? "The value of {0} must be a valid email",
-            "url"               => $f3->get('f3_validate_url') ?? "The value of {0} must be a valid url"),
-            "card"              => $f3->get('f3_validate_card') ?? "The value of {0} must be a valid credit card"),
+            "url"               => $f3->get('f3_validate_url') ?? "The value of {0} must be a valid url",
+            "card"              => $f3->get('f3_validate_card') ?? "The value of {0} must be a valid credit card",
             "ipv4"              => $f3->get('f3_validate_ipv4') ?? "The value of {0} must be a valid ipv4 address",
             "ipv6"              => $f3->get('f3_validate_ipv6') ?? "The value of {0} must be a valid ipv6 address",
             "max_length"        => $f3->get('f3_validate_length') ?? "The length of {0} can not be greater than {1}",
